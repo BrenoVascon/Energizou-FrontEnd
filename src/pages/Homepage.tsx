@@ -21,14 +21,14 @@ const Contact: React.FC = () => {
     password: '',
     company: '',
     cnpj: '',
-    cep: '09330626',
+    cep: '',
     address: '',
     number: '',
     phone: '',
     email: ''
   };
 
-  const {  handleSubmit } = useForm<FormData>();
+  const { handleSubmit } = useForm<FormData>();
 
   const [formData, setFormData] = useState<FormData>(initialFormData);
 
@@ -40,15 +40,16 @@ const Contact: React.FC = () => {
     }));
   };
 
-const urlCreateUser = "http://localhost:3333/users/createUser"
-
-
   const onSubmit = async (data: FormData): Promise<void> => {
     try {
-      const response = await axios.post(urlCreateUser, data);
-      console.log('Usuário criado com sucesso:', response.data);
-      console.log(data);
-      setFormData(initialFormData);
+      axios.post('http://localhost:3333/users', data)
+  .then(response => {
+    console.log(response.data);
+  })
+  .catch(error => {
+    console.log(error);
+  });
+
       // Adicione lógica adicional, como mostrar uma mensagem de sucesso ao usuário
     } catch (error) {
       console.error('Erro ao criar o usuário:', error);
@@ -61,7 +62,7 @@ const urlCreateUser = "http://localhost:3333/users/createUser"
       <div>
         <h1>Entre em Contato</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
-         <input type="text" placeholder='name' name='name' value={formData.name}
+        <input type="text" placeholder='name' name='name' value={formData.name}
          onChange={handleChange}/>
          <input
             type="password"
