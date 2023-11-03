@@ -1,13 +1,13 @@
-import React, { useState, ChangeEvent } from 'react';
-import axios from 'axios';
-import { useForm } from 'react-hook-form';
+import React from "react";
+import axios from "axios";
+import { useForm } from "react-hook-form";
 
 interface FormData {
   id?: number;
   name: string;
   password: string;
   company: string;
-  cnpj: string;
+  CNPJ: string;
   cep: string;
   address: string;
   number: string;
@@ -16,44 +16,20 @@ interface FormData {
 }
 
 const Contact: React.FC = () => {
-  const initialFormData: FormData = {
-    name: '',
-    password: '',
-    company: '',
-    cnpj: '',
-    cep: '',
-    address: '',
-    number: '',
-    phone: '',
-    email: ''
-  };
-
-  const { handleSubmit } = useForm<FormData>();
-
-  const [formData, setFormData] = useState<FormData>(initialFormData);
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
+  const control = useForm<FormData>();
 
   const onSubmit = async (data: FormData): Promise<void> => {
     try {
-      axios.post('http://localhost:3333/users', data)
-  .then(response => {
-    console.log(response.data);
-  })
-  .catch(error => {
-    console.log(error);
-  });
-
-      // Adicione lógica adicional, como mostrar uma mensagem de sucesso ao usuário
+      axios
+        .post("http://localhost:3333/users/", data)
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     } catch (error) {
-      console.error('Erro ao criar o usuário:', error);
-      // Adicione lógica para lidar com o erro, como mostrar uma mensagem de erro ao usuário
+      console.error("Erro ao criar o usuário:", error);
     }
   };
 
@@ -61,65 +37,44 @@ const Contact: React.FC = () => {
     <div>
       <div>
         <h1>Entre em Contato</h1>
-        <form onSubmit={handleSubmit(onSubmit)}>
-        <input type="text" placeholder='name' name='name' value={formData.name}
-         onChange={handleChange}/>
-         <input
+        <form onSubmit={control.handleSubmit(onSubmit)}>
+          <input type="text" placeholder="name" {...control.register("name")} />
+          <input
             type="password"
             placeholder="Password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
+            {...control.register("password")}
           />
           <input
-            type="text" 
+            type="text"
             placeholder="Company"
-            name="company"
-            value={formData.company}
-            onChange={handleChange}
+            {...control.register("company")}
           />
-         
-                <input
-            type="number" 
+
+          <input
+            type="number"
             placeholder="CNPJ"
-            name="cnpj"
-            value={formData.cnpj}
-            onChange={handleChange}
+            {...control.register("CNPJ")}
           />
-                 <input
-            type="number" 
-            placeholder="CEP"
-            name="cep"
-            value={formData.cep}
-            onChange={handleChange}
-          />
-                 <input
-            type="text" 
+          <input type="number" placeholder="CEP" {...control.register("cep")} />
+          <input
+            type="text"
             placeholder="address"
-            name="address"
-            value={formData.address}
-            onChange={handleChange}
+            {...control.register("address")}
           />
-                 <input
-            type="number" 
+          <input
+            type="number"
             placeholder="number"
-            name="number"
-            value={formData.number}
-            onChange={handleChange}
+            {...control.register("number")}
           />
-                  <input
-            type="number" 
+          <input
+            type="number"
             placeholder="phone number"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
+            {...control.register("phone")}
           />
-                  <input
-            type="text" 
+          <input
+            type="text"
             placeholder="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
+            {...control.register("email")}
           />
 
           <button type="submit">Enviar</button>
