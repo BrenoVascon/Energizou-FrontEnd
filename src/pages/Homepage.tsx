@@ -49,11 +49,8 @@ const Contact: React.FC = () => {
   .catch(error => {
     console.log(error);
   });
-
-      // Adicione lógica adicional, como mostrar uma mensagem de sucesso ao usuário
     } catch (error) {
       console.error('Erro ao criar o usuário:', error);
-      // Adicione lógica para lidar com o erro, como mostrar uma mensagem de erro ao usuário
     }
   };
 
