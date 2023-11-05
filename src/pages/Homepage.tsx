@@ -1,9 +1,12 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import { useForm } from "react-hook-form";
+import '../css/Homepage.css'
+import '../css/reset.css';
+import DeleteButton from "../components/DeleteCompany";
+import NavBar from "../components/nav";
 
-interface FormData {
-  id?: number;
+interface UserData {
+  id: number;
   name: string;
   password: string;
   company: string;
@@ -15,73 +18,89 @@ interface FormData {
   email: string;
 }
 
-const Contact: React.FC = () => {
-  const control = useForm<FormData>();
+function Home() {
+  const [data, setData] = useState<UserData[]>([]);
+  const [searchText, setSearchText] = useState('');
+  const [filteredData, setFilteredData] = useState<UserData[]>([]);
 
-  const onSubmit = async (data: FormData): Promise<void> => {
-    try {
-      axios
-        .post("http://localhost:3333/users/", data)
-        .then((response) => {
-          console.log(response.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    } catch (error) {
-      console.error("Erro ao criar o usuário:", error);
-    }
-  };
+  useEffect(() => {
+    axios
+      .get<UserData[]>("http://localhost:3333/users")
+      .then((res) => {
+        setData(res.data);
+        setFilteredData(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  useEffect(() => {
+    const filtered = data.filter((d) => d.CNPJ.includes(searchText));
+    setFilteredData(filtered);
+  }, [searchText, data]);
 
   return (
-    <div>
-      <div>
-        <h1>Entre em Contato</h1>
-        <form onSubmit={control.handleSubmit(onSubmit)}>
-          <input type="text" placeholder="name" {...control.register("name")} />
-          <input
-            type="password"
-            placeholder="Password"
-            {...control.register("password")}
-          />
-          <input
-            type="text"
-            placeholder="Company"
-            {...control.register("company")}
-          />
-
-          <input
-            type="number"
-            placeholder="CNPJ"
-            {...control.register("CNPJ")}
-          />
-          <input type="number" placeholder="CEP" {...control.register("cep")} />
-          <input
-            type="text"
-            placeholder="address"
-            {...control.register("address")}
-          />
-          <input
-            type="number"
-            placeholder="number"
-            {...control.register("number")}
-          />
-          <input
-            type="number"
-            placeholder="phone number"
-            {...control.register("phone")}
-          />
-          <input
-            type="text"
-            placeholder="email"
-            {...control.register("email")}
-          />
-
-          <button type="submit">Enviar</button>
-        </form>
-      </div>
-    </div>
+    <>
+    <NavBar />
+      <section className="section-grid">
+        <h1>Usuários Cadastrados</h1>
+        <div className="DataUsers">
+          <div className="search-bar">
+            <input
+              type="text"
+              placeholder="Pesquisar por CNPJ"
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
+            />
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Senha</th>
+                <th>Empresa</th>
+                <th>CNPJ</th>
+                <th>CEP</th>
+                <th>Endereço</th>
+                <th>Numero</th>
+                <th>Telefone</th>
+                <th>Email</th>
+                <th>Editar / Excluir</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filteredData.map((d, i) => (
+                <tr key={i}>
+                  <td>{d.name}</td>
+                  <td>{d.password}</td>
+                  <td>{d.company}</td>
+                  <td>{d.CNPJ}</td>
+                  <td>{d.cep}</td>
+                  <td>{d.address}</td>
+                  <td>{d.number}</td>
+                  <td>{d.phone}</td>
+                  <td>{d.email}</td>
+                  <td>
+                    <button className="buttonEditUser">Editar</button>
+                    <DeleteButton
+                      CNPJ={d.CNPJ}
+                      name={d.name}
+                      password={d.password}
+                      company={d.company}
+                      cep={d.cep}
+                      address={d.address}
+                      number={d.number}
+                      phone={d.phone}
+                      email={d.email}
+                    />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </>
   );
-};
+}
 
-export default Contact;
+export default Home;

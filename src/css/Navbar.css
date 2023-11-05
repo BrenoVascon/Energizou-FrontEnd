@@ -1,0 +1,20 @@
+
+.Navbar{
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+}
+.Navbar button {
+  margin-top: .25rem;
+}
+.Navbar img{
+  background-color: white;
+}
+@media (max-width: 768px) {
+.Navbar{
+  width: 100vw;
+  background-color: white;
+}
+
+  
+}

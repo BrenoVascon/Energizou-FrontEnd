@@ -1,0 +1,130 @@
+*{
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+
+}
+body{
+  background-color: #F4F4F5
+}
+form h1{
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  padding-bottom: 1rem;
+  color: #003063;
+}
+
+.input-control{ 
+  justify-content: center;
+  display: flex;
+  
+}
+
+.input-container{
+  align-self: stretch;
+  display: flex;
+    gap: 0.5rem;
+    flex-direction: column;
+}
+label{
+  color: var(--zinc-500, #71717A);
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 100%; /* 16px */
+}
+
+
+form {
+margin-top: 3rem;
+display: flex;
+width: 80%;
+height: 1029px;
+padding: 60px 80px;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 30px;
+flex-shrink: 0;
+background-color: white;
+}
+
+input {
+  display: flex;
+padding: 12px 16px;
+align-items: center;
+gap: 5px;
+align-self: stretch;
+border-radius: 8px;
+border: 1px solid var(--zinc-300, #D4D4D8);
+width: 100%;
+}
+
+
+
+button {
+  display: inline-flex;
+  height: auto;
+  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  align-self: stretch;
+  background-clip: padding-box;
+  background-color: #FFCD00;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+}
+
+button:hover,
+button:focus {
+  background-color: #FFCD00;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+button:active {
+  background-color: #FFCD00;
+  box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+  transform: translateY(0);
+}
+
+
+@media (max-width: 700px) {
+  form {
+    width: 100%;
+  }
+  form h1{
+    width: 100%;
+    font-size: 25px;
+  }
+}
+@media (min-width: 1200px) {
+  form {
+    width: 50%;
+  }
+}
