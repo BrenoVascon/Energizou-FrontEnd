@@ -62,7 +62,8 @@ Certifique-se de que o Node.js está instalado em seu sistema.
 
 Inicie o servidor Node.js com o comando npm dev:start.
 
-Certifique-se de que o servidor backend também esteja ativo para que o frontend funcione corretamente. Siga as instruções no repositório Energizou-BackEnd para configurar o servidor backend.
+Certifique-se de que o servidor backend também esteja ativo para que o frontend funcione corretamente. 
+Siga as instruções no repositório Energizou-BackEnd para configurar o servidor backend Repositorio: https://github.com/BrenoVascon/Energizou-BackEnd
   
 
 
