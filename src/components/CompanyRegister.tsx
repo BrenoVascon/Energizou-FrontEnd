@@ -12,7 +12,7 @@ interface FormData {
   name: string;
   password: string;
   company: string;
-  CNPJ: string;
+  cnpj: string;
   cep: string;
   address: string;
   number: string;
@@ -25,18 +25,14 @@ const CreateUser: React.FC = () => {
 
   const onSubmit = async (data: FormData): Promise<void> => {
     try {
-      axios
-        .post("http://localhost:3333/users/", data)
-        .then((response) => {
-          console.log(response.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      const response = await axios.post("http://localhost:3333/users/", data);
+      console.log(response.data);
+    
     } catch (error) {
       console.error("Erro ao criar o usuário:", error);
     }
   };
+  
 
   const checkCEP = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const cep = e.target.value.replace(/\D/g, '');
@@ -59,7 +55,7 @@ const CreateUser: React.FC = () => {
   return (
     <>
    <div className="Navbar">
-      <img src={img} alt="Logo" />
+      <img className="homeImg" src={img} alt="Logo" />
       <Link to="/">
         <button>Voltar</button>
       </Link>
@@ -96,8 +92,8 @@ const CreateUser: React.FC = () => {
             <label htmlFor="CNPJ">CNPJ</label>
             <input
               type="text"
-              placeholder="Digite o CNPJ da Empresa"
-              {...control.register("CNPJ")}
+              placeholder="Digite o CNPJ da Empresa Sem / apenas ."
+              {...control.register("cnpj")}
             />
           </div>
           <div className="input-container">

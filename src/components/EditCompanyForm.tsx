@@ -1,18 +1,15 @@
-import React, { } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import { useForm } from "react-hook-form";
-import "../css/NewUser.css";
-import "../css/reset.css";
-import img from "../assets/logo-img.png";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import "../css/UserEdit.css"
+import  img  from "../assets/logo-img.png"
 
 
-interface FormData {
-  id?: number;
+interface UserData {
   name: string;
   password: string;
   company: string;
-  CNPJ: string;
+  cnpj: string;
   cep: string;
   address: string;
   number: string;
@@ -20,35 +17,28 @@ interface FormData {
   email: string;
 }
 
-const EditUser: React.FC = () => {
-  const control = useForm<FormData>();
+function EditUser() {
+  
 
-  const onSubmit = async (data: FormData): Promise<void> => {
-    try {
-      axios
-        .put("http://localhost:3333/users/", data)
-        .then((response) => {
-          console.log(response.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    } catch (error) {
-      console.error("Erro ao Alterar os dados:", error);
-    }
-  };
 
   const checkCEP = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const cep = e.target.value.replace(/\D/g, '');
-
+    const cep = e.target.value.replace(/\D/g, ''); 
+  
     if (cep.length === 8) {
       try {
         const response = await axios.get(`https://viacep.com.br/ws/${cep}/json/`);
         const data = response.data;
-
-        if (data) {
-          control.setValue('address', data.logradouro);
-          control.setValue('number', '');
+  
+        if (!data.erro) {
+        
+          setUserData((prevUserData) => ({
+            ...prevUserData,
+            cep: data.cep,
+            address: data.logradouro,
+            
+          }));
+        } else {
+          console.error("CEP não encontrado.");
         }
       } catch (error) {
         console.error("Erro ao buscar CEP:", error);
@@ -56,98 +46,160 @@ const EditUser: React.FC = () => {
     }
   };
 
+  const { cnpj } = useParams<{ cnpj: string }>();
+
+const [userData, setUserData] = useState<UserData>({
+  name: "",
+  password: "",
+  company: "",
+  cnpj: cnpj || "", 
+  cep: "",
+  address: "",
+  number: "",
+  phone: "",
+  email: "",
+});
+
+  useEffect(() => {
+    axios
+      .get<UserData>(`http://localhost:3333/users/${cnpj}`)
+      .then((res) => {
+        setUserData(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, [cnpj]);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setUserData({
+      ...userData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = () => {
+    axios
+      .put(`http://localhost:3333/users/${cnpj}`, userData)
+      .then((res) => {
+        console.log("Dados atualizados:", res.data);
+      })
+      .catch((err) => {
+        console.error("Erro ao atualizar dados do usuário:", err);
+      });
+  };
+
   return (
     <>
-   <div className="Navbar">
-      <img src={img} alt="Logo" />
+     <div className="Navbar">
+      <img src={ img } alt="Logo" />
       <Link to="/">
         <button>Voltar</button>
       </Link>
       </div>
-    <div className="form-container">
-      <div className="input-control">
-        <form onSubmit={control.handleSubmit(onSubmit)}>
-          <h1>Cadastre uma Empresa</h1>
-          <div className="input-container">
-            <label htmlFor="name">Nome</label>
-            <input
-              type="text"
-              placeholder="Digite Seu Nome"
-              {...control.register("name")}
-            />
+    <div className="Container" >
+      <form className="form-container"> 
+         <div className=".edit-user">
+        <h1 className="letterH">Editar Usuário</h1>
+       
+          <div>
+          <label>Nome</label>
+          <input
+            type="text"
+            name="name"
+            placeholder="Digite Seu nome"
+            value={userData.name}
+            onChange={handleInputChange}
+          />
+        
+        </div>
+        <div className="input-container2">
+          <label>Senha</label>
+          <input 
+            type="password"
+            name="password"
+            placeholder="Digite Sua Senha"
+            value={userData.password}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="input-container2">
+          <label>Empresa</label>
+          <input 
+            type="text"
+            name="company"
+            placeholder="Digite o Nome da Empresa"
+            value={userData.company}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <label>CNPJ</label>
+          <input 
+            type="text"
+            name="cnpj" 
+            placeholder="Digite o CNPJ sem / apenas ."
+            value={userData.cnpj}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="input-container2">
+          <label>CEP</label>
+          <input 
+            type="text"
+            name="cep"
+            placeholder="digite seu CEP"
+            value={userData.cep}
+            onBlur={checkCEP}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="input-container2">
+          <label>Endereço</label>
+          <input 
+            type="text"
+            name="address"
+            value={userData.address}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="input-container2">
+          <label>Número</label>
+          <input 
+            type="text"
+            name="number"
+            placeholder="Digite Seu Número"
+            value={userData.number}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="input-container2">
+          <label>Telefone</label>
+          <input 
+            type="text"
+            name="phone"
+            placeholder="Digite Seu Telefone"
+            value={userData.phone}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="input-container2">
+          <label>Email</label>
+          <input 
+            type="text"
+            name="email"
+            placeholder="Digite Seu Email"
+            value={userData.email}
+            onChange={handleInputChange}
+          />
           </div>
-          <div className="input-container">
-            <label htmlFor="password">Senha</label>
-            <input
-              type="password"
-              placeholder="Digite Sua senha"
-              {...control.register("password")}
-            />
-          </div>
-          <div className="input-container">
-            <label htmlFor="company">Nome da Empresa</label>
-            <input
-              type="text"
-              placeholder="Digite o Nome da Empresa"
-              {...control.register("company")}
-            />
-          </div>
-          <div className="input-container">
-            <label htmlFor="CNPJ">CNPJ</label>
-            <input
-              type="number"
-              placeholder="Digite o CNPJ da Empresa"
-              {...control.register("CNPJ")}
-            />
-          </div>
-          <div className="input-container">
-            <label htmlFor="cep">CEP</label>
-            <input
-              type="text"
-              placeholder="CEP"
-              {...control.register("cep")}
-              onBlur={checkCEP}
-            />
-          </div>
-          <div className="input-container">
-            <label htmlFor="address">Endereço</label>
-            <input
-              type="text"
-              placeholder="Digite Seu CEP"
-              {...control.register("address")}
-            />
-          </div>
-          <div className="input-container">
-            <label htmlFor="number">Número</label>
-            <input
-              type="number"
-              placeholder="Número"
-              {...control.register("number")}
-            />
-          </div>
-          <div className="input-container">
-            <label htmlFor="phone">Telefone</label>
-            <input
-              type="number"
-              placeholder="Digite Seu Telefone"
-              {...control.register("phone")}
-            />
-          </div>
-          <div className="input-container">
-            <label htmlFor="email">Email</label>
-            <input
-              type="text"
-              placeholder="Digite Seu Email"
-              {...control.register("email")}
-            />
-          </div>
-
-          <button type="submit">Cadastrar Empresa</button>
-        </form>
-      </div>
+        </div>
+        <button className="AttUser" type="button" onClick={handleSubmit}>
+          Atualizar Usuário
+        </button>
+      </form>
     </div>
     </>
   );
-};
+}
 
 export default EditUser;

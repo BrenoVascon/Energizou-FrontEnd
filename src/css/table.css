@@ -1,0 +1,46 @@
+/* Estilos para a tabela */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  border-radius: 8px; /* Valor de --border-radius */
+  overflow: hidden;
+}
+
+/* Estilos para o cabeçalho da tabela */
+thead {
+  position: sticky;
+  z-index: 100;
+}
+
+/* Estilos para a linha de cabeçalho */
+.trHead {
+  background: rgb(237, 237, 237); /* Valor de --bg2 */
+}
+
+/* Estilos para as células de cabeçalho */th {
+  padding: 8px; /* Valor de --sm-spacing */
+  color: rgb(33, 33, 33); /* Valor de --text */
+  text-transform: capitalize;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* Estilos para o corpo da tabela */
+tr {
+  background: rgb(255, 255, 255); /* Valor de --white */
+}
+
+/* Estilos para as células do corpo */
+td {
+  padding: 8px; /* Valor de --sm-spacing */
+  border: 1px solid rgb(237, 237, 237); /* Valor de --bg2 */
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  table {
+    display: flex;
+    justify-content: center;
+  }
+  }

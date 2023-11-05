@@ -1,12 +1,18 @@
+body{
+  background-color:#F4F4F5
+}
+
 
 section h1 {
   font-family: 'Inter', sans-serif;
   font-weight: bold;
   padding-bottom: 1rem;
   color: #003063;
+  display: flex;
+  justify-content: center;
 }
 
-.section-grid {
+table.section-grid {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,7 +34,7 @@ table {
 
 
 th, td {
-  padding: 10px;
+  padding: 6px;
   text-align: left;
   border: 1px solid #ddd;
   background-color: white;
@@ -92,7 +98,11 @@ tbody tr {
 
 @media (max-width: 768px) {
   table {
-    display: block;
+    display: flex;
+    justify-content: center;
+  }
+  .logoImg{ 
+    display: hidden;
   }
 
   th, td {

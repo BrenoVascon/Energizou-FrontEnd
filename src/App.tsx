@@ -3,6 +3,7 @@ import Home from "./pages/Homepage"
 import { BrowserRouter } from "react-router-dom"; // Importe o BrowserRouter
 import CreateUser from "./components/CompanyRegister";
 import ButtonEditUser from "./components/EditCompanyForm";
+import EditUser from "./components/EditCompanyForm";
 
 function App() {
   return (
@@ -11,6 +12,8 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/createUser' element={<CreateUser />} />
         <Route path='/EditUser' element={<ButtonEditUser />} />
+        <Route path="/editarUsuario/:cnpj" Component={EditUser} />
+
 
 
       </Routes>

@@ -1,19 +1,33 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import img from "../assets/logo-img.png";
 import "../css/Navbar.css";
-import { Link } from "react-router-dom";
 
-const NavBar: React.FC = () => {
+interface NavBarProps {
+  onSearch: (text: string) => void;
+}
+
+const NavBar: React.FC<NavBarProps> = ({ onSearch }) => {
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const searchText = e.target.value;
+    onSearch(searchText);
+  };
+
   return (
     <div className="Navbar">
-      <img src={img} alt="Logo" />
+      <img className="logoImg" src={img} alt="Logo" />
+      <input
+        className="SearchUsers"
+        type="text"
+        placeholder="Pesquisar por CNPJ"
+        onChange={handleSearch}
+      />
+
       <Link to="/CreateUser">
-        <button>Criar Empresa</button>
+        <button className="ButtonCreateCompany">Criar Empresa</button>
       </Link>
     </div>
   );
 };
 
 export default NavBar;
-
-

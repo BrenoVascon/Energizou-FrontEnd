@@ -32,9 +32,9 @@ font-family: Inter;
 font-size: 16px;
 font-style: normal;
 font-weight: 400;
-line-height: 100%; /* 16px */
-}
+line-height: 100%; 
 
+}
 
 form {
 margin-top: 3rem;
@@ -117,7 +117,9 @@ button:active {
 @media (max-width: 700px) {
   form {
     width: 100%;
+    
   }
+  
   form h1{
     width: 100%;
     font-size: 25px;
@@ -126,5 +128,6 @@ button:active {
 @media (min-width: 1200px) {
   form {
     width: 50%;
-  }
+    height: 100vh;
+}
 }

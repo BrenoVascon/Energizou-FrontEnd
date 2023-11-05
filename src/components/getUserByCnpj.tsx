@@ -30,7 +30,7 @@ const SearchUsers: React.FC<SearchUsersProps> = ({ onDataFiltered }) => {
     // Função para buscar usuários
     const fetchUsers = async () => {
       try {
-        const response = await axios.get<User[]>('http://localhost:3333/users/:cnpj${CNPJ}');
+        const response = await axios.get<User[]>('http://localhost:3333/users${CNPJ}');
         console.log(response.data)
         setUsers(response.data);
         onDataFiltered(response.data); // Atualize os dados filtrados assim que a busca for concluída

@@ -1,16 +1,16 @@
 import axios from "axios";
 
-interface DeleteButtonProps {
-  CNPJ: string;
-}
+type DeleteButtonProps = {
+  cnpj: string;
+};
 
-function DeleteButton({ CNPJ }: DeleteButtonProps) {
+function DeleteButton({ cnpj }: DeleteButtonProps) {
   const handleDelete = () => {
     const confirmDelete = window.confirm("Você tem certeza que quer excluir esse usuário");
 
     if (confirmDelete) {
       axios
-        .delete(`http://localhost:3333/users/${CNPJ}`) 
+        .delete(`http://localhost:3333/users/${cnpj}`)
         .then(() => {
           console.log("Item deleted successfully");
           window.location.reload();
@@ -22,7 +22,7 @@ function DeleteButton({ CNPJ }: DeleteButtonProps) {
   };
 
   return (
-    <button className="buttonDeleteUser" onClick={handleDelete}>Delete</button>
+    <button className="buttonDeleteUser" onClick={() => handleDelete()}>Delete</button>
   );
 }
 
