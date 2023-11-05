@@ -1,10 +1,9 @@
-![image](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![image](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+[![TypeORM](https://img.shields.io/badge/TypeORM-^0.2.33-blue.svg)](https://typeorm.io/)
+[![Node.js](https://img.shields.io/badge/Node.js-^14.17.0-green.svg)](https://nodejs.org/)
+[![React](https://img.shields.io/badge/React-^17.0.2-blue.svg)](https://reactjs.org/)
 [![MySQL](https://img.shields.io/badge/MySQL-^8.0.0-blue.svg)](https://www.mysql.com/)
-![image]()
-![image]()
-![image]()
-![image]()
+[![Axios](https://img.shields.io/badge/Axios-^0.21.4-yellow.svg)](https://axios-http.com/)
+
 # Projeto de API em Rest
 
 Este é um projeto de exemplo de uma API REST feito em Django, desenvolvido como parte do desafio proposto pela Generation Brasil e Potencia Tech.
