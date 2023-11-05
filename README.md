@@ -1,9 +1,7 @@
-[![TypeORM](https://img.shields.io/badge/TypeORM-^0.2.33-blue.svg)](https://typeorm.io/)
-[![Node.js](https://img.shields.io/badge/Node.js-^14.17.0-green.svg)](https://nodejs.org/)
-[![React](https://img.shields.io/badge/React-^17.0.2-blue.svg)](https://reactjs.org/)
-[![MySQL](https://img.shields.io/badge/MySQL-^8.0.0-blue.svg)](https://www.mysql.com/)
-[![Axios](https://img.shields.io/badge/Axios-^0.21.4-yellow.svg)](https://axios-http.com/)
-
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![Axios](https://img.shields.io/badge/axios-671ddf?&style=for-the-badge&logo=axios&logoColor=white)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![CSS](https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 # Aplicativo React de Gerenciamento de Empresas
 
 Este é um projeto de aplicativo React que permite aos usuários realizar as seguintes ações:
