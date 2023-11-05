@@ -6,7 +6,7 @@
 # Projeto FullStack
 
 
--#Sobre o Projeto: Aplicativo React de Gerenciamento de Empresas
+-**Sobre o Projeto**: Aplicativo React de Gerenciamento de Empresas
 
 Este é um projeto de aplicativo React que permite aos usuários realizar as seguintes ações:
 
