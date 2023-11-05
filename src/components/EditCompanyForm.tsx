@@ -82,6 +82,7 @@ const [userData, setUserData] = useState<UserData>({
       .put(`http://localhost:3333/users/${cnpj}`, userData)
       .then((res) => {
         console.log("Dados atualizados:", res.data);
+        window.alert("Os dados do usuário foram alterados!")
       })
       .catch((err) => {
         console.error("Erro ao atualizar dados do usuário:", err);

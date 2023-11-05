@@ -27,6 +27,7 @@ const CreateUser: React.FC = () => {
     try {
       const response = await axios.post("http://localhost:3333/users/", data);
       console.log(response.data);
+      window.alert("Usuário foi criado!!")
     
     } catch (error) {
       console.error("Erro ao criar o usuário:", error);
