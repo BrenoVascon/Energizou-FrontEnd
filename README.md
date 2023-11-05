@@ -2,7 +2,7 @@
 ![Axios](https://img.shields.io/badge/axios-671ddf?&style=for-the-badge&logo=axios&logoColor=white)
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![CSS](https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-# Aplicativo React de Gerenciamento de Empresas
+##Sobre o Projeto: Aplicativo React de Gerenciamento de Empresas
 
 Este é um projeto de aplicativo React que permite aos usuários realizar as seguintes ações:
 
@@ -27,8 +27,7 @@ https://github.com/BrenoVascon/Energizou-FrontEnd/
 - [Sobre o Projeto](#sobre-o-projeto)
 - [Tecnologias](#tecnologias)
 - [Setup](#setup)
-- [Abordagem](#abordagem)
-- [License](#license)
+
 
 ## Tecnologias
 -Este projeto faz uso de diversas tecnologias e ferramentas, incluindo:
