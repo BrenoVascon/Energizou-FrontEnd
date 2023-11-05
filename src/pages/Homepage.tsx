@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import '../css/Homepage.css'
-import '../css/reset.css';
+import "../css/Homepage.css";
+import "../css/reset.css";
 import DeleteButton from "../components/DeleteCompany";
 import NavBar from "../components/nav";
 
@@ -20,7 +20,7 @@ interface UserData {
 
 function Home() {
   const [data, setData] = useState<UserData[]>([]);
-  const [searchText, setSearchText] = useState('');
+  const [searchText, setSearchText] = useState("");
   const [filteredData, setFilteredData] = useState<UserData[]>([]);
 
   useEffect(() => {
@@ -40,7 +40,7 @@ function Home() {
 
   return (
     <>
-    <NavBar />
+      <NavBar />
       <section className="section-grid">
         <h1>Usuários Cadastrados</h1>
         <div className="DataUsers">
@@ -81,17 +81,7 @@ function Home() {
                   <td>{d.email}</td>
                   <td>
                     <button className="buttonEditUser">Editar</button>
-                    <DeleteButton
-                      CNPJ={d.CNPJ}
-                      name={d.name}
-                      password={d.password}
-                      company={d.company}
-                      cep={d.cep}
-                      address={d.address}
-                      number={d.number}
-                      phone={d.phone}
-                      email={d.email}
-                    />
+                    <DeleteButton CNPJ={d.CNPJ.replace(/\//g, "")}  />
                   </td>
                 </tr>
               ))}

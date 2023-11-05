@@ -1,26 +1,16 @@
-
 import axios from "axios";
 
 interface DeleteButtonProps {
-  
-  name: string;
-  password: string;
-  company: string;
   CNPJ: string;
-  cep: string;
-  address: string;
-  number: string;
-  phone: string;
-  email: string;
 }
 
 function DeleteButton({ CNPJ }: DeleteButtonProps) {
   const handleDelete = () => {
     const confirmDelete = window.confirm("Você tem certeza que quer excluir esse usuário");
-    
+
     if (confirmDelete) {
       axios
-        .delete(`http://localhost:3333/users/:cnpj${CNPJ}`)
+        .delete(`http://localhost:3333/users/${CNPJ}`) 
         .then(() => {
           console.log("Item deleted successfully");
           window.location.reload();
