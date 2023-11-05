@@ -65,7 +65,7 @@ label {
   line-height: 100%;
   /* 16px */
 
-
+}
 
 
   input{
@@ -98,4 +98,3 @@ label {
     box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
     transform: translateY(0);
   }
-}

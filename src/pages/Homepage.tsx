@@ -78,7 +78,7 @@ function Home() {
     <td>{d.phone}</td>
     <td>{d.email}</td>
     <td>
-      <Link to={`/editarUsuario/${d.cnpj ? d.cnpj : ""}`}>
+      <Link to={`/EditUser/${d.cnpj ? d.cnpj : ""}`}>
         <button className="buttonEditUser" id="btEditar">
           Editar
         </button>

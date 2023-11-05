@@ -99,14 +99,14 @@ const CreateUser: React.FC = () => {
                 {...control.register("company")}
                 maxLength={100}
               />
-              <div className="input-container">
-                <label htmlFor="cnpj">CNPJ</label>
-                <input
-                  type="text"
-                  placeholder="Digite o CNPJ da Empresa Sem / apenas ."
-                  {...control.register("cnpj")}
-                />
-              </div>
+            </div>
+            <div className="input-container">
+              <label htmlFor="cnpj">CNPJ</label>
+              <input
+                type="text"
+                placeholder="Digite o CNPJ da Empresa Sem / apenas ."
+                {...control.register("cnpj")}
+              />
             </div>
             <div className="input-container">
               <label htmlFor="cep">CEP</label>

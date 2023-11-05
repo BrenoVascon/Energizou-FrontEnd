@@ -1,24 +1,19 @@
-import { Route, Routes } from "react-router-dom"
-import Home from "./pages/Homepage"
-import { BrowserRouter } from "react-router-dom"; // Importe o BrowserRouter
-import CreateUser from "./components/CompanyRegister";
-import ButtonEditUser from "./components/EditCompanyForm";
-import EditUser from "./components/EditCompanyForm";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; // Importe BrowserRouter aqui
+import CreateUser from "../src//components/CompanyRegister";
+import EditUser from "../src/components/EditCompanyForm";
+import Home from "./pages/Homepage";
 
 function App() {
   return (
-    <BrowserRouter>
+    <Router> 
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/createUser' element={<CreateUser />} />
-        <Route path='/EditUser' element={<ButtonEditUser />} />
-        <Route path="/editarUsuario/:cnpj" Component={EditUser} />
-
-
-
+        <Route path="/" element={<Home />} />
+        <Route path="/CreateUser" element={<CreateUser />} />
+        <Route path="/EditUser/:cnpj" element={<EditUser />} />
       </Routes>
-    </BrowserRouter>
-  )
+    </Router>
+  );
 }
 
-export default App
+export default App;
