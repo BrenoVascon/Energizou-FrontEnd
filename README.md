@@ -6,7 +6,7 @@
 # Projeto FullStack
 
 
-##Sobre o Projeto: Aplicativo React de Gerenciamento de Empresas
+#Sobre o Projeto: Aplicativo React de Gerenciamento de Empresas
 
 Este é um projeto de aplicativo React que permite aos usuários realizar as seguintes ações:
 
@@ -27,8 +27,6 @@ O aplicativo utiliza comunicação HTTP para fazer requisições à API por meio
 https://github.com/BrenoVascon/Energizou-FrontEnd/
 
 ## Sumário:
-
-- [Sobre o Projeto](#sobre-o-projeto)
 - [Tecnologias](#tecnologias)
 - [Setup](#setup)
 
