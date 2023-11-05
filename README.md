@@ -68,7 +68,7 @@ Siga as instruções no repositório Energizou-BackEnd para configurar o servido
 
 
 
-5. Agora, você pode acessar o projeto em [http://localhost:8000/](http://localhost:8000/).
+5. Agora, você pode acessar o projeto em [http://localhost:3333/](http://localhost:3333/).
 
 ##Landing Page 
 ![image](https://github.com/BrenoVascon/Energizou-FrontEnd/assets/72839350/d66457c4-9392-4f5b-b946-118f8f2a29bb)
